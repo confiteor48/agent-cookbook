@@ -96,6 +96,15 @@ explicit UTF-8 `Files.readAllBytes`/`Files.write` for small text files when `Fil
 `Files.writeString` is absent from `android.jar`. Stream large media and model files instead of
 loading them wholesale merely to hash or copy them.
 
+Preflight both actual APK manifests and installed package versions before installing either APK.
+Instrumentation APKs can omit declared version fields; keep that case distinct from malformed
+metadata and the product's positive release-version policy. Bind any effective default to the
+selected platform's parsing contract and the literal test package, then compare the actual guest
+version without allowing downgrades. Test the real metadata reader with both LF and CRLF output
+before launching a guest. After a partial setup, reconcile installed APK hashes and reuse matching
+bytes; repair only the failed observer or unexecuted installation, preserving the original failure
+without rebuilding, reinstalling both packages or wiping the guest merely to obtain a clean run.
+
 ## FreeCAD Automation
 
 For work using FreeCAD's Python API, geometric verification, or manufacturing exports, read and follow [freecad.md](./freecad.md) from the user-level `.codex` checkout.
