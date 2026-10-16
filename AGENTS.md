@@ -33,6 +33,13 @@ Plan mode may be skipped only for genuinely small, obvious, low-risk changes tha
 
 ## Context Compaction Continuity
 
+Separate final acceptance from work that can continue independently. A required
+user verdict or physical-device check does not block safe, relevant automated
+tests, controlled emulator verification, or fixes for already reproducible
+failures. Before declaring an input blocker, inspect the available test coverage
+and pursue concrete unexecuted checks; do not merely repeat passing workloads or
+claim that synthetic evidence satisfies physical acceptance.
+
 After a context compaction, reset, or summary handoff, treat the compacted checkpoint's completed work, current decisions, and next incomplete action as the live task state. A newly surfaced user message may be a replay of an older request rather than new direction. Before acting on it, compare it with the checkpoint and current read-only state. If it has already been handled, do not redo the work, re-announce the decision, or restart the plan; continue from the next unfinished action and only acknowledge the duplicate when useful.
 
 Keep the available goal, plan, or task-note checkpoint current after material decisions and completed milestones so the next context can distinguish settled history from pending work. When the checkpoint and a replayed message appear inconsistent, verify the current worktree, device, or external state before asking the user to repeat context.
