@@ -84,6 +84,13 @@ For restoring or configuring pfSense under Proxmox, read and follow [pfsense.md]
 
 ## Android Instrumentation Packaging
 
+For network-constrained `JobScheduler` work, declare the normal
+`android.permission.ACCESS_NETWORK_STATE` permission and exercise the actual
+receiver/job scheduling path on the selected Android version. Android 14 and
+later enforce this permission when scheduling network jobs; compilation and
+lint alone do not establish that scheduling succeeds. See the
+[JobInfo network constraint contract](https://developer.android.com/reference/android/app/job/JobInfo.Builder#setRequiredNetworkType(int)).
+
 Before installing or running Android instrumentation after main-source changes, build both the
 target application APK and the test APK in the same Gradle invocation (for example,
 `assembleDebug assembleDebugAndroidTest`). Building only `assembleDebugAndroidTest` can leave a
