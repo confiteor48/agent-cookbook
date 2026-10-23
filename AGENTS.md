@@ -112,6 +112,18 @@ before launching a guest. After a partial setup, reconcile installed APK hashes 
 bytes; repair only the failed observer or unexecuted installation, preserving the original failure
 without rebuilding, reinstalling both packages or wiping the guest merely to obtain a clean run.
 
+Source-based instrumentation selectors must recognize valid runtime-eligibility annotations
+between `@Test` and a method declaration, including `@SdkSuppress`. Verify the exact package,
+class, method, annotation contract and complete selected inventory before guest mutation.
+Preserve a parser refusal and repair that observer against the unchanged source; do not remove
+a valid eligibility annotation or rebuild the APK merely to satisfy an outdated matcher.
+
+Derive native pixel witnesses from the actual effect's opaque interior and observed clip,
+including density-scaled rounding. An axis-aligned mask bound does not make its corner opaque.
+Retain failed pixels and literal draw identity before assertions; distinguish a bad sample point
+from missing coverage, and rerun only the corrected failed contract after verifying unchanged
+production bytes and preserving independently recorded passing cases.
+
 ## FreeCAD Automation
 
 For work using FreeCAD's Python API, geometric verification, or manufacturing exports, read and follow [freecad.md](./freecad.md) from the user-level `.codex` checkout.
