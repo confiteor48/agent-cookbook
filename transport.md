@@ -1,5 +1,16 @@
 # Shell, SSH, and API Reliability
 
+Before using an authentication reload, import, migration, or refresh flag in a
+verification call, trace its complete credential read/write path. A flag named
+`forceSessionReload` can import a retained seed file into the active secret store
+and overwrite a newer session; it is not necessarily a read-only cache bypass.
+Use stored-status reads for read-only verification. Never use a seed import to
+suppress automatic recovery. If the supported path would replace credentials,
+keep that operation separate and honor the task's credential-change authority.
+After an accidental import, preserve the failure and inspect recovery metadata
+without exposing secrets; do not infer an upstream permission denial from the
+seed's rejection or silently create a replacement session.
+
 Use these rules whenever a command crosses a shell, SSH, HTTP, JSON, or encoding boundary:
 
 1. Identify every parser in the path before running the command, such as PowerShell -> native argv -> SSH -> remote shell -> JSON. Minimize the number of parsing layers instead of adding escapes until a command happens to work.
