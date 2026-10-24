@@ -25,6 +25,12 @@ Treat `volume` as a percentage-only user-facing alias for `oververbosity`. Map t
 
 Use concise, functional labels. Do not add decorative flavor text, cute taglines, aspirational card titles, or a subtitle beneath every heading. Add helper text only when it explains a necessary action, non-obvious behavior, or meaningful choice; remove text that repeats the label or surrounding controls. Keep Home/dashboard summaries compact and put detailed breakdowns on their dedicated screens. Do not invent mode names, confirmation dialogs, or explanatory notices for straightforward user-requested behavior.
 
+## Documentation and Task Instructions
+
+Write documentation for its reader: explain what a feature does, how to use or configure it, and limitations that affect a decision or action. Remove decorative copy, task-status narration, implementation handoff disclaimers, and descriptions of what an editing task did not change. Keep migration history only where it helps someone migrate or recover.
+
+Keep task instructions, approval requirements, agent workflow rules, and user preferences in the applicable agent guidance. Do not turn them into product UI text, wiki filler, code comments, docstrings, or test descriptions. Comments should explain lasting technical intent or non-obvious constraints; documentation should describe actual behavior and useful procedures.
+
 ## Planning
 
 Start substantial work in Plan mode before implementation. This includes new features, refactors, migrations, architectural changes, cross-cutting work, and any task with multiple meaningful steps, unclear scope, or important tradeoffs. Use the planning phase to inspect the relevant system, identify risks and dependencies, define verification, and resolve decisions that could materially change the implementation.
