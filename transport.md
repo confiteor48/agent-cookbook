@@ -11,6 +11,16 @@ After an accidental import, preserve the failure and inspect recovery metadata
 without exposing secrets; do not infer an upstream permission denial from the
 seed's rejection or silently create a replacement session.
 
+Before using a request privacy marker as a cache control, inspect its complete
+adapter, policy and fixture behavior. A `sensitive` flag can bypass cassette
+replay and recording as well as response caching, making an isolated smoke test
+attempt a real provider request. Use an explicitly supported cache directive
+such as `cache: no-store` for freshness, and classify authentication separately.
+Verify the actual adapter path for anonymous cassette replay, authenticated
+no-replay, and independent cache bypass. Keep strict fixtures and existing
+privacy protections intact; retain an original failed run and qualify the
+corrected path before combined release checks.
+
 Use these rules whenever a command crosses a shell, SSH, HTTP, JSON, or encoding boundary:
 
 1. Identify every parser in the path before running the command, such as PowerShell -> native argv -> SSH -> remote shell -> JSON. Minimize the number of parsing layers instead of adding escapes until a command happens to work.
