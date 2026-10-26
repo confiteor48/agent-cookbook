@@ -37,6 +37,18 @@ Start substantial work in Plan mode before implementation. This includes new fea
 
 Plan mode may be skipped only for genuinely small, obvious, low-risk changes that are faster to implement than to formally plan, and for narrow time-sensitive bug fixes where delay matters. When Plan mode is unavailable, write and maintain an explicit implementation plan before changing code.
 
+## Workspace Cleanup
+
+Treat disk space as a shared resource. Before a large checkout, dependency install, build, model download, or emulator run, inspect available space and the size of existing task artifacts. Reuse a suitable existing checkout and dependencies rather than making another full validation copy.
+
+Clean up at every completed checkpoint, handoff, or blocked phase; do not wait for a long-running task to end. Remove task-owned temporary exports, obsolete build outputs, dependency environments, downloaded installers, and expanded intermediate generations after their last required use. Keep one current validation workspace when further work needs it. Archive managed worktrees through the app when appropriate, preserving unpushed or uncommitted work first.
+
+Remove task-created disposable emulators, containers, and snapshots after their last required check and after their processes are closed. Preserve user data, login state, active shared tooling, source changes, credentials, and necessary rollback assets. Check current ownership and use before deleting from shared caches or another task's directory; age or a temporary-looking name alone is not enough.
+
+Retain one concise evidence record with exact revisions, hashes, results, and links, plus the minimum unique failure or recovery assets. Do not retain full dependency trees, repeated source exports, or every successful build merely as evidence. Prefer existing Git history and compact manifests to duplicate copies. Reconcile partial or uncertain operations before removing their inputs.
+
+Verify the actual free-space change after substantial cleanup and report what was reclaimed and what remains in use. Do not claim logical file sizes, sparse virtual-disk sizes, or shared hardlinks as reclaimed bytes. Use explicit resolved paths and refuse reparse-point traversal during Windows cleanup.
+
 ## Context Compaction Continuity
 
 Separate final acceptance from work that can continue independently. A required
